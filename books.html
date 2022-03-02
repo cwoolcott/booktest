@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Books LISTING!</title>
+</head>
+
+<body>
+    <h1>BOOKS!!!!</h1>
+    <div id="books">
+
+    </div>
+
+    <script>
+        // Fetch request to add a new pet
+        var booksContainer = document.getElementById("books");
+
+        fetch('/api/listbooks', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => res.json())
+            .then((books) => {
+                for (var i = 0; i < books.length; i++) {
+                    booksContainer.append(books[i].title)
+                    booksContainer.append(" | ");
+                }
+            });
+    </script>
+
+</body>
+
+</html>
